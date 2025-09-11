@@ -1,13 +1,26 @@
-name: CI Test
+name: CI
 
 on: [push, pull_request]
 
 jobs:
-  test-run:
+  build-backend:
     runs-on: ubuntu-latest
+
     steps:
+      # Download the code from the repo
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Say Hello
-        run: echo "✅ CI/CD is working!"
+      # Define .NET enviorment 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore ./backend/Startup.Api
+
+      # Build
+      - name: Build
+        run: dotnet build --no-restore ./backend/Startup.Api

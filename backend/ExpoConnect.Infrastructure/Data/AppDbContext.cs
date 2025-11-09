@@ -40,13 +40,17 @@ public class AppDbContext : DbContext
             v => v.ToList()
         );
 
+        b.HasPostgresEnum<VisitSticker>();
+        b.HasPostgresExtension("uuid-ossp");
+
         b.Entity<Visit>(e =>
         {
             e.Property(x => x.Stickers)
-             .HasConversion(stickersConverter)
              .HasColumnType("text[]")
              .Metadata.SetValueComparer(stickersComparer);
         });
+
+        b.Entity<CatalogItem>().Ignore("stand_number");
 
         b.Entity<User>(e =>
         {
@@ -68,7 +72,12 @@ public class AppDbContext : DbContext
             e.Property(x => x.RefreshTokenExpiresAtUtc).HasColumnName("refresh_token_expires_at_utc");
         });
 
-
-        b.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        b.ApplyConfiguration(new Mappings.UserMap());
+        b.ApplyConfiguration(new Mappings.UserCredentialMap());
+        b.ApplyConfiguration(new Mappings.RefreshTokenMap());
+        b.ApplyConfiguration(new Mappings.StandMap());
+        b.ApplyConfiguration(new Mappings.VisitMap());
+        b.ApplyConfiguration(new Mappings.CatalogMap());
+        b.ApplyConfiguration(new Mappings.CatalogItemMap());
     }
 }

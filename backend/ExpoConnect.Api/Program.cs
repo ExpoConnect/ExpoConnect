@@ -31,6 +31,9 @@ builder.Services.AddScoped<ICatalogService, CatalogService>();
 
 builder.Services.AddScoped<IUsersService, UsersService>();
 
+builder.Services.AddScoped<ICatalogService, CatalogService>();
+
+builder.Services.AddScoped<IStandsService, StandsService>();
 
 builder.Services.AddControllers();
 

@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QR", "mobile\QR\QR.csproj", "{50ABF025-EBBA-5628-2433-AEBFFC60F48D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{47823F94-5621-4702-8673-DCF812AD7E86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoConnect.Api", "backend\ExpoConnect.Api\ExpoConnect.Api.csproj", "{4F40DDCB-BBCD-0431-0588-3F4467CA2772}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoConnect.Application", "backend\ExpoConnect.Application\ExpoConnect.Application.csproj", "{2E1F3520-983F-EFEE-5BE1-484A6B4632AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoConnect.Contracts", "backend\ExpoConnect.Contracts\ExpoConnect.Contracts.csproj", "{0516E109-1BD0-9F50-40DD-467C0386EA32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoConnect.Domain", "backend\ExpoConnect.Domain\ExpoConnect.Domain.csproj", "{5398377F-7E44-B8DC-A566-8FF5057380B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpoConnect.Infrastructure", "backend\ExpoConnect.Infrastructure\ExpoConnect.Infrastructure.csproj", "{9F21F4E7-9377-F3CC-50F5-85D3CFD0A46A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50ABF025-EBBA-5628-2433-AEBFFC60F48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50ABF025-EBBA-5628-2433-AEBFFC60F48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50ABF025-EBBA-5628-2433-AEBFFC60F48D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{50ABF025-EBBA-5628-2433-AEBFFC60F48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50ABF025-EBBA-5628-2433-AEBFFC60F48D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50ABF025-EBBA-5628-2433-AEBFFC60F48D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4F40DDCB-BBCD-0431-0588-3F4467CA2772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F40DDCB-BBCD-0431-0588-3F4467CA2772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F40DDCB-BBCD-0431-0588-3F4467CA2772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F40DDCB-BBCD-0431-0588-3F4467CA2772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E1F3520-983F-EFEE-5BE1-484A6B4632AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E1F3520-983F-EFEE-5BE1-484A6B4632AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E1F3520-983F-EFEE-5BE1-484A6B4632AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E1F3520-983F-EFEE-5BE1-484A6B4632AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0516E109-1BD0-9F50-40DD-467C0386EA32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0516E109-1BD0-9F50-40DD-467C0386EA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0516E109-1BD0-9F50-40DD-467C0386EA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0516E109-1BD0-9F50-40DD-467C0386EA32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5398377F-7E44-B8DC-A566-8FF5057380B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5398377F-7E44-B8DC-A566-8FF5057380B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5398377F-7E44-B8DC-A566-8FF5057380B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5398377F-7E44-B8DC-A566-8FF5057380B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F21F4E7-9377-F3CC-50F5-85D3CFD0A46A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F21F4E7-9377-F3CC-50F5-85D3CFD0A46A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F21F4E7-9377-F3CC-50F5-85D3CFD0A46A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F21F4E7-9377-F3CC-50F5-85D3CFD0A46A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{50ABF025-EBBA-5628-2433-AEBFFC60F48D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{4F40DDCB-BBCD-0431-0588-3F4467CA2772} = {47823F94-5621-4702-8673-DCF812AD7E86}
+		{2E1F3520-983F-EFEE-5BE1-484A6B4632AE} = {47823F94-5621-4702-8673-DCF812AD7E86}
+		{0516E109-1BD0-9F50-40DD-467C0386EA32} = {47823F94-5621-4702-8673-DCF812AD7E86}
+		{5398377F-7E44-B8DC-A566-8FF5057380B1} = {47823F94-5621-4702-8673-DCF812AD7E86}
+		{9F21F4E7-9377-F3CC-50F5-85D3CFD0A46A} = {47823F94-5621-4702-8673-DCF812AD7E86}
+	EndGlobalSection
+EndGlobal

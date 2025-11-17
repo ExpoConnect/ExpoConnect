@@ -45,6 +45,12 @@ namespace QR
             await Navigation.PushAsync(new RegisterPage());
 
         }
+
+        private async void OnLoginClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginPage());
+
+        }
         private async void OnScanClicked(object sender, EventArgs e)
         {
             //יוצרים אובייקט סורק מצלמה 

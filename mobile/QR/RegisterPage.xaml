@@ -3,14 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QR.RegisterPage"
              Title="RegisterPage">
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
         <Label 
             Text="Creat Account"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            FontSize="28"
+            HorizontalOptions="Center"
+            FontAttributes="Bold" />
+		
         <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email"></Entry>
+		
         <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword ="True"></Entry>
+		
         <Entry x:Name="DisplayNameEntry" Placeholder="Display Name" ></Entry>
-        <Button Text="Submit" Clicked="OnSubmitClicked"/>
-    </VerticalStackLayout>
+		
+        <Button Text="Submit" Clicked="OnSubmitClicked"
+				 BackgroundColor="#6A1B9A"
+                    TextColor="White"
+                    CornerRadius="10"/>
+		<Button Text="Already have an account? Login"
+        Clicked="OnGoToLoginClicked"/>
+
+	</VerticalStackLayout>
 </ContentPage>

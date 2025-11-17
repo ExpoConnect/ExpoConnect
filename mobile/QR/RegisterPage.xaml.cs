@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
+
 namespace QR;
 
 public partial class RegisterPage : ContentPage
@@ -25,24 +26,25 @@ public partial class RegisterPage : ContentPage
 		
 		try {
             //
-            var client = new HttpClient();
+            var api = new ApiClientService();
+
             var data = new { email = email, password = password, displayName = displayName };
-            string json = JsonSerializer.Serialize(data);
-            //
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("http://10.0.2.2:5027/api/Auth/register", content);
-            await DisplayAlert("Debug", response.StatusCode.ToString(), "OK");
+            var response = await api.PostAsync("Auth/register", data);
+
 
             if (response.IsSuccessStatusCode)
             {
                 //אם ההרשמה הצליחה ננסה לקראואת הקוד שחזר
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var jsonResponse = JsonSerializer.Deserialize<JsonElement>(responseBody);
-                string token = jsonResponse.GetProperty("token").GetString();
+                string accessToken = jsonResponse.GetProperty("accessToken").GetString();
+                string refreshToken = jsonResponse.GetProperty("refreshToken").GetString();
+
+                await SecureStorage.SetAsync("access_token", accessToken);
+                await SecureStorage.SetAsync("refresh_token", refreshToken);
 
 
-
-                await DisplayAlert("Success", $"Registered!\n {token}", "OK");
+                await DisplayAlert("Success", $"Registered!\n {accessToken}", "OK");
             }
             else
             {
@@ -61,4 +63,9 @@ public partial class RegisterPage : ContentPage
 
 
     }
+    private async void OnGoToLoginClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new LoginPage());
+    }
+
 }

@@ -73,20 +73,22 @@ builder.Services.AddSwaggerGen(c =>
         BearerFormat = "JWT"
     });
     c.AddSecurityRequirement(new OpenApiSecurityRequirement{
-      {
+    {
         new OpenApiSecurityScheme { Reference = new OpenApiReference {
             Type = ReferenceType.SecurityScheme, Id = "Bearer"}}, new string[] {}
-      }
+        }
     });
 });
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+    {
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ExpoConnect API v1");
+    c.RoutePrefix = "swagger";
+});
 
 app.UseAuthentication();
 app.UseAuthorization();

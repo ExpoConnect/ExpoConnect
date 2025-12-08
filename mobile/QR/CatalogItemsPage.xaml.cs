@@ -1,35 +1,49 @@
-
+using QR.Api;
 using System.Collections.ObjectModel;
-using System.Text.Json;
-using QR.Models;
+
 namespace QR;
 
 public partial class CatalogItemsPage : ContentPage
 {
-    private readonly CatalogResponse _catalog;
-    public ObservableCollection<CatalogItemResponse> Items { get; set; } = new();
+    private readonly ICatalogApi _catalogApi;
+    private readonly Guid _catalogId;
 
-    public CatalogItemsPage(CatalogResponse catalog)
+    public ObservableCollection<CatalogItemDto> Items { get; set; } = new();
+
+    public CatalogItemsPage(ICatalogApi catalogApi, Guid catalogId)
     {
         InitializeComponent();
 
-        _catalog = catalog;
-        Title = catalog.Name;  
+        _catalogApi = catalogApi;
+        _catalogId = catalogId;
 
         ItemsCollection.ItemsSource = Items;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
 
+        await LoadItemsAsync();
+    }
+
+    private async Task LoadItemsAsync()
+    {
         Items.Clear();
 
-        if (_catalog.Items != null)
+        var catalog = await _catalogApi.GetCatalogByIdAsync(_catalogId);
+
+        Title = catalog.Name; 
+
+        if (catalog.Items != null)
         {
-            foreach (var item in _catalog.Items)
+            foreach (var item in catalog.Items)
                 Items.Add(item);
         }
     }
-}
 
+    private async void OnAddItemClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AddNewItemPage(_catalogApi, _catalogId));
+    }
+}

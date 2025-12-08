@@ -1,16 +1,18 @@
-using QR.Models;
+using QR.Api;
 using System.Collections.ObjectModel;
-using System.Text.Json;
+//using Xamarin.Google.Crypto.Tink.Shaded.Protobuf;
 
 namespace QR;
 
 public partial class UsersCatalogsPage : ContentPage
 {
-    public ObservableCollection<CatalogResponse> Catalogs { get; } = new();
+    private readonly ICatalogApi _catalogApi;
+    public ObservableCollection<CatalogDto> Catalogs { get; } = new();
 
-    public UsersCatalogsPage()
+    public UsersCatalogsPage(ICatalogApi catalogApi)
     {
         InitializeComponent();
+        _catalogApi = catalogApi;
         CatalogsCollection.ItemsSource = Catalogs;
     }
 
@@ -20,20 +22,7 @@ public partial class UsersCatalogsPage : ContentPage
 
         try
         {
-            var api = ApiClientService.Instance; 
-            var response = await api.GetAsync("catalogs");
-            response.EnsureSuccessStatusCode();
-
-            string json = await response.Content.ReadAsStringAsync();
-
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-
-            var catalogsList =
-                JsonSerializer.Deserialize<List<CatalogResponse>>(json, options)
-                ?? new List<CatalogResponse>();
+            var catalogsList = await _catalogApi.GetCatalogsAsync();
 
             Catalogs.Clear();
             foreach (var c in catalogsList)
@@ -47,13 +36,10 @@ public partial class UsersCatalogsPage : ContentPage
 
     private async void CatalogSelected(object sender, SelectionChangedEventArgs e)
     {
-        if (e.CurrentSelection.FirstOrDefault() is CatalogResponse catalog)
+        if (e.CurrentSelection.FirstOrDefault() is CatalogDto catalog)
         {
-            await Navigation.PushAsync(new CatalogItemsPage(catalog));
-
+            await Navigation.PushAsync(new CatalogItemsPage(_catalogApi, catalog.CatalogId));
             CatalogsCollection.SelectedItem = null;
         }
     }
-    
-
 }

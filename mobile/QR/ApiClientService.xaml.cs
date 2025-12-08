@@ -5,11 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-//מחלקה אחת שמרכזת את כל הטיפול בבקשות לשרת, כולל:
-//שליחת בקשות ל־API(GET, POST וכו’)
-//הוספת Header עם ה־Access Token
-//טיפול אוטומטי במקרה של טוקן שפג תוקף
-//חידוש הטוקן ע"י ה־Refresh Token
+
 
 
 public partial class ApiClientService : ContentPage

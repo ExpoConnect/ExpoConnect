@@ -2,6 +2,7 @@
 {
     public partial class App : Application
     {
+        public static IServiceProvider Services { get; private set; }
         public App()
         {
             
@@ -21,8 +22,9 @@
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-           // return new Window(new GuestShell());
-            return new Window(new MainPage());
+            // return new Window(new GuestShell());
+            var tempPage = new ContentPage();
+            return new Window(tempPage);
         }
     }
 }

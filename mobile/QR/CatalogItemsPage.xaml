@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QR.CatalogItemsPage"
              Title="Catalog details">
-
-    <CollectionView x:Name="ItemsCollection"
+    <Grid RowDefinitions="*,Auto">
+        <CollectionView x:Name="ItemsCollection"
                     Margin="10">
 
         <CollectionView.ItemTemplate>
@@ -47,4 +47,14 @@
         </CollectionView.ItemTemplate>
 
     </CollectionView>
+        <Button Grid.Row="1"
+                Text="Add Item "
+                Margin="16"
+                HeightRequest="50"
+                CornerRadius="12"
+                BackgroundColor="#512BD4"
+                TextColor="White"
+                Clicked="OnAddItemClicked" />
+
+    </Grid>
 </ContentPage>
